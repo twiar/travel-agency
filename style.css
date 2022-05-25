@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+	--margin: 8px;
+
+	/* Color */
+	--white: white;
+	--black: black;
+	--primary: #3e86f5;
+	--secondary: #7c7c7c;
+
+	/* Icons */
+	--sprite_cell: 132px;
+	--sprite_cols: 8;
+	--sprite_rows: 1;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	color: var(--white);
+}
+
+/* Layout */
+.wrapper {
+	min-height: 100vh;
+	background-color: var(--secondary);
+}
+
+.container {
+	position: relative;
+	max-width: 1180px;
+	padding: 0 calc(var(--margin) * 2);
+	margin: auto;
+	height: 100%;
+}
+.container_column {
+	display: flex;
+	flex-direction: column;
+}
+
+/*--> Blocks <--*/
+/* First Screen */
+.first-screen {
+	position: relative;
+	height: 100vh;
+	background: url('images/fs_bg.jpg') center / cover;
+}
+
+.first-screen::before {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+	opacity: 0.5;
+	background-color: #000;
+	content: '';
+}
+
+.first-screen > * {
+	position: relative;
+	z-index: 0;
+	color: white;
+}
+.header {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 80px;
+}
+.logo {
+	font-size: 48px;
+	font-weight: 500;
+	color: var(--white);
+}
+.menu {
+	display: flex;
+	align-items: center;
+}
+.menu__item {
+	font-size: 24px;
+	font-weight: 500;
+	color: var(--white);
+	text-decoration: none;
+}
+.menu__item:not(:last-child) {
+	margin-right: calc(var(--margin) * 6);
+}
+.menu__item_active {
+	color: var(--primary);
+	padding: 16px 44px;
+	border-radius: 10px;
+	background-color: var(--white);
+}
+
+.first-screen__content {
+	text-align: center;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-width: 820px;
+	margin: auto;
+}
+.first-screen__title {
+	font-size: 64px;
+	line-height: 96px;
+	font-weight: 600;
+}
+.first-screen__description {
+	margin-top: calc(var(--margin) * 5);
+	font-size: 24px;
+	line-height: 48px;
+	font-weight: 500;
+}
+
+/* Search Block */
+
+.search {
+	position: relative;
+	z-index: 0;
+	margin-top: calc(var(--margin) * -8 * 3);
+	padding-bottom: calc(var(--margin) * 8);
+}
+.search__tabs {
+	background-color: var(--white);
+	display: inline-flex;
+	padding: 10px 10px 24px 10px;
+	border-radius: 25px 25px 0 0;
+}
+.search__tab {
+	cursor: default;
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 0;
+	padding: 18px 20px;
+	border-radius: 25px;
+	overflow: hidden;
+	color: var(--black);
+	font-weight: 500;
+}
+.search__tab:first-child {
+	margin-right: calc(var(--margin) * 2);
+}
+.search__tab:not(.search__tab_active) {
+	cursor: pointer;
+}
+.search__tab_active::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	opacity: 0.2;
+	background-color: var(--primary);
+}
+
+.search__tab-img {
+	--sprite_cell: 25px;
+	width: var(--sprite_cell);
+	height: var(--sprite_cell);
+	margin-right: 4px;
+	background: url('images/sprite.png') left top /
+		calc(var(--sprite_cell) * var(--sprite_cols))
+		calc(var(--sprite_cell) * var(--sprite_rows));
+}
+.search__tab-img_1 {
+	transform: rotate(-45deg);
+}
+.search__tab-img_2 {
+	background-position-x: calc(var(--sprite_cell) * -1);
+}
+.search__filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	background-color: var(--white);
+	padding: 48px 60px;
+	border-radius: 0 50px 50px 50px;
+}
+.search__filters > *:not(:last-child) {
+	margin-right: calc(var(--margin) * 3);
+}
+.search__button {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 0;
+	min-width: 154px;
+	height: 154px;
+	border-radius: 65px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+.search__button::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0.8;
+	z-index: -1;
+	background-color: var(--primary);
+}
+.search__button > div {
+	--sprite_cell: 62px;
+	width: var(--sprite_cell);
+	height: var(--sprite_cell);
+	background: url('images/sprite.png') left top /
+		calc(var(--sprite_cell) * var(--sprite_cols))
+		calc(var(--sprite_cell) * var(--sprite_rows));
+	background-position-x: calc(var(--sprite_cell) * -4);
+}
+
+/* Filter block */
+.filter {
+	display: inline-flex;
+	justify-content: space-between;
+	position: relative;
+	padding: 44px 22px;
+	color: var(--black);
+}
+.filter::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0.4;
+	border-radius: 25px;
+	border: 2px solid var(--secondary);
+}
+.filter > *:not(:last-child) {
+	margin-right: calc(var(--margin) * 5);
+}
+.filter__item {
+	font-weight: 500;
+}
+.filter__name {
+	font-size: 17px;
+	opacity: 0.5;
+	color: var(--black);
+	margin-bottom: calc(var(--margin) * 1.5);
+}
+.filter__value {
+	font-size: 24px;
+}
+.filter__icon {
+	--sprite_cell: 40px;
+	position: relative;
+	min-width: var(--sprite_cell);
+	height: var(--sprite_cell);
+}
+.filter__icon::before,
+.filter__icon::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: var(--sprite_cell);
+}
+.filter__icon::before {
+	--sprite_cell: 30px;
+	top: 5px;
+	left: 5px;
+	width: var(--sprite_cell);
+	height: var(--sprite_cell);
+	background: url('images/sprite.png') left top /
+		calc(var(--sprite_cell) * var(--sprite_cols))
+		calc(var(--sprite_cell) * var(--sprite_rows));
+	background-position-x: calc(var(--sprite_cell) * -2);
+}
+.filter__icon::after {
+	opacity: 0.3;
+	border: 1px dashed var(--black);
+}
+.filter_date .filter__name {
+	display: flex;
+	align-items: center;
+	opacity: 1;
+}
+.filter_date .filter__name > span {
+	opacity: 0.5;
+}
+.filter__name-icon {
+	--sprite_cell: 25px;
+	margin-left: calc(var(--margin) * 1.5);
+	width: var(--sprite_cell);
+	height: var(--sprite_cell);
+	background: url('images/sprite.png') left top /
+		calc(var(--sprite_cell) * var(--sprite_cols))
+		calc(var(--sprite_cell) * var(--sprite_rows));
+}
+.filter__name-icon_return {
+	transform: rotate(-180deg);
+}
+.filter_date .filter__icon::before {
+	--sprite_cell: 26px;
+	top: 7px;
+	left: 7px;
+	background-position-x: calc(var(--sprite_cell) * -3);
+}
