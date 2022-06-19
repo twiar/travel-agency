@@ -25,6 +25,9 @@
 body {
 	font-family: 'Poppins', sans-serif;
 }
+body * {
+	transition: all 0.3s ease-in-out;
+}
 
 /* Layout */
 .wrapper {
@@ -108,10 +111,8 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin-top: 0;
-	margin-bottom: 0;
 	max-width: 820px;
-	margin: auto;
+	margin: 0 auto;
 }
 .first-screen__title {
 	font-size: 64px;
@@ -250,6 +251,7 @@ body {
 /* About Block */
 .about-block {
 	padding: 80px 0;
+	overflow-x: hidden;
 }
 .about-block > .container {
 	display: flex;
@@ -791,4 +793,331 @@ body {
 	color: var(--primary);
 	background-color: var(--white);
 	box-shadow: none;
+}
+
+/* Adaptive layout */
+
+/* Desktop */
+@media screen and (max-width: 1200px) {
+	:root {
+		--blocks_padding: 6vw 0;
+	}
+	/* First screen */
+	.first-screen__content {
+		justify-content: flex-start;
+		padding-top: calc(var(--margin) * 5);
+	}
+	.first-screen__title {
+		font-size: 56px;
+		line-height: 1.4em;
+	}
+	.first-screen__description {
+		margin-top: calc(var(--margin) * 3);
+		font-size: 22px;
+		line-height: 1.8em;
+	}
+	/* Search Block */
+	.search {
+		padding-bottom: 0;
+		margin-top: -22vw;
+	}
+	.search__tabs {
+		padding: 1vw;
+		padding-bottom: 0;
+	}
+	.search__filters {
+		padding: 2vw;
+	}
+	.search__filters > *:not(:last-child) {
+		margin-right: 1vw;
+		flex-grow: 1;
+	}
+	.filter {
+		padding: 2.6vw 3vw;
+	}
+	.filter > *:not(:last-child) {
+		margin-right: 2.4vw;
+	}
+	.filter__name {
+		font-size: 1.4vw;
+		height: 10px;
+	}
+	.filter__name-icon {
+		--sprite_cell: 2.2vw;
+	}
+	.filter__value {
+		font-size: 2vw;
+	}
+	.filter__icon {
+		--sprite_cell: 3.6vw;
+	}
+	.filter__icon::before {
+		--sprite_cell: 3.6vw;
+		top: 0;
+		left: 0;
+	}
+	.filter_date .filter__icon::before {
+		--sprite_cell: 3vw;
+		top: calc(var(--sprite_cell) / 12);
+		left: calc(var(--sprite_cell) / 12);
+		background-position-x: calc(var(--sprite_cell) * -3);
+	}
+	.search__button {
+		--size: 9vw;
+		min-width: var(--size);
+		height: var(--size);
+		margin: initial;
+	}
+	.search__button > div {
+		--sprite_cell: 4.6vw;
+	}
+
+	/* Special Block */
+	.special-block {
+		padding: var(--blocks_padding);
+	}
+
+	/*--> Elements <--*/
+	/* Title */
+	.title {
+		margin-bottom: 3vw;
+	}
+}
+
+/* Notebook */
+@media screen and (max-width: 992px) {
+	:root {
+		--margin: 6px;
+		--blocks_padding: 3vw 0;
+		--card_size: 32vw;
+	}
+	/* First screen */
+	.first-screen {
+		height: initial;
+		padding-bottom: calc(var(--margin) * 8);
+	}
+	.first-screen__title {
+		font-size: 5vw;
+	}
+	.first-screen__description {
+		font-size: 2.6vw;
+	}
+
+	.logo {
+		font-size: 40px;
+	}
+	.menu__item:not(:last-child) {
+		margin-right: calc(var(--margin) * 4);
+	}
+	.menu__item {
+		font-size: 22px;
+	}
+	.menu__item_active {
+		padding: 12px 26px;
+		border-radius: 8px;
+	}
+
+	/* Search Block */
+	.search-block {
+		padding: calc(var(--margin) * 2) 0;
+		overflow-x: hidden;
+	}
+	.search {
+		margin-top: 0;
+	}
+	.search__tab:first-child {
+		margin-right: 1vw;
+	}
+	.search__tab {
+		padding: 1vw 2vw;
+		font-size: 1.8vw;
+	}
+	.search__tab-img {
+		--sprite_cell: 2.4vw;
+	}
+
+	/* Special Block */
+	.special-block__cards {
+		margin: calc(var(--card_size) / -32);
+	}
+	.special-block__cards .card {
+		margin: calc(var(--card_size) / 32);
+	}
+
+	/*--> Elements <--*/
+	/* Title */
+	.title {
+		margin-bottom: 3vw;
+		font-size: 4.2vw;
+		line-height: 1.6em;
+	}
+	/* Card */
+	.card {
+		padding: calc(var(--card_size) / 15);
+		border-radius: calc(var(--card_size) / 7);
+		max-width: var(--card_size);
+	}
+	.card__photo {
+		width: calc(var(--card_size) / 1.07);
+		border-radius: 0;
+	}
+	.card__date {
+		--font_size: calc(var(--card_size) / 16);
+		margin-left: calc(var(--card_size) / 17);
+	}
+	.card__params {
+		font-size: calc(var(--card_size) / 22);
+	}
+	.card__badge {
+		padding: calc(var(--card_size) / 100) calc(var(--card_size) / 32);
+	}
+	.card__title {
+		font-size: calc(var(--card_size) / 13);
+		line-height: 1.4em;
+		margin: 0.6vw 0;
+	}
+	.card__price {
+		font-size: calc(var(--card_size) / 16);
+	}
+	.card__price > span {
+		font-size: 0.8em;
+	}
+	.card__button {
+		font-size: calc(var(--card_size) / 18);
+		border-radius: 0.8em;
+		padding: 0.9em 1em;
+	}
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+	:root {
+		--blocks_padding: 2vw 0;
+		--card_size: 38vw;
+	}
+	/* First screen */
+	.header {
+		flex-direction: column;
+		padding-top: calc(var(--margin) * 2);
+	}
+	.logo {
+		font-size: 6vw;
+		margin-bottom: 0.6vw;
+	}
+	.menu__item {
+		font-size: 3vw;
+	}
+	.menu__item:not(:last-child) {
+		margin-right: 4vw;
+	}
+
+	/*--> Elements <--*/
+	/* Title */
+	.title {
+		font-size: 4vw;
+	}
+	/* Tabs */
+	.tabs__item {
+		font-size: 2.4vw;
+	}
+}
+
+/* Phone */
+@media screen and (max-width: 576px) {
+	:root {
+		--card_size: 40vw;
+	}
+	.header {
+		min-height: initial;
+	}
+	.menu__item_active {
+		padding: 1.6vw 3vw;
+		border-radius: 1vw;
+	}
+	/* Search Block */
+	.search__tabs {
+		border-radius: 3vw 3vw 0 0;
+	}
+	.search__tab {
+		padding: 1.6vw 3vw;
+		font-size: 2.6vw;
+	}
+	.search__tab-img {
+		--sprite_cell: 3.6vw;
+	}
+	.search__filters {
+		border-radius: 5vw;
+		border-top-left-radius: 0;
+	}
+	.search__filters > *:not(:last-child) {
+		margin-bottom: 2vw;
+	}
+	.filter::before {
+		border-radius: 5vw;
+		border-width: 1px;
+	}
+	.filter__name {
+		font-size: 2.4vw;
+		margin-bottom: 1.6vw;
+	}
+	.filter__name-icon {
+		--sprite_cell: 3.2vw;
+		margin-left: 0.8vw;
+	}
+	.filter__value {
+		font-size: 3vw;
+	}
+	.filter__icon {
+		--sprite_cell: 6.6vw;
+	}
+	.filter__icon::before {
+		--sprite_cell: 5.6vw;
+		top: 0.5vw;
+		left: 0.5vw;
+	}
+	.filter_date .filter__icon::before {
+		--sprite_cell: 4.8vw;
+		top: 0.8vw;
+		left: 0.8vw;
+	}
+	.search__button {
+		width: 100%;
+	}
+
+	/*--> Elements <--*/
+	/* Tabs */
+	.tabs__item {
+		font-size: 3vw;
+	}
+}
+
+/* Small devices */
+@media screen and (max-width: 480px) {
+	:root {
+		--margin: 4px;
+		--card_size: 41vw;
+	}
+	/* First screen */
+	.first-screen {
+		padding-bottom: calc(var(--margin) * 4);
+	}
+	.first-screen__content {
+		padding-top: calc(var(--margin) * 3);
+	}
+	.first-screen__description {
+		margin-top: var(--margin);
+	}
+
+	/*--> Elements <--*/
+	/* Title */
+	.title {
+		font-size: 4.8vw;
+	}
+	/* Tabs */
+	.tabs__content {
+		padding: 0;
+	}
+	.tabs__item {
+		font-size: 3.4vw;
+	}
 }
